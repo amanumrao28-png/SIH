@@ -1,123 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Rural E-Complaint Portal</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-  body {
-    background-image: url('rural-background.jpg'); /* Replace with your rural background image file */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    position: relative;
-    min-height: 100vh;
-  }
-  /* Optional overlay for better contrast */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0,0,0,0.35);
-    z-index: -1;
-  }
-  .sidebar {
-    height: 100%;
-    width: 0; /* Start hidden */
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s; /* Smooth transition */
-    padding-top: 60px;
-  }
+    body {
+      background-image: url('rural-background.jpg');
+      /* Replace with your rural background image file */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      position: relative;
+      min-height: 100px;
+    }
 
-  .sidebar a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    color: white;
-    display: block;
-    transition: 0.3s;
-  }
+    /* Optional overlay for better contrast */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.35);
+      z-index: -1;
+    }
 
-  .sidebar a:hover {
-    background-color: #575757;
-  }
+    .sidebar {
+      height: 100%;
+      width: 0;
+      /* Start hidden */
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #0b0000;
+      overflow-x: hidden;
 
-  .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 36px;
-  }
-  #main {
-    transition: margin-left .5s;
-    padding: 16px;
-    margin-left: 0;
-    font-size: 20px; /* Increased font size for visibility */
-    cursor: pointer;
-    color: rgb(61, 9, 9);
-    background-color: rgb(255, 255, 255);
-    border-radius: 8px;
-    width: fit-content;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
-    margin-left: 10px;
-  }
-  
-  
-</style>
+      transition: 0.5s;
+      /* Smooth transition */
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 36px;
+    }
+
+    #main {
+      transition: margin-left: 0.5s;
+      padding: 09px;
+      margin-left: 0;
+      font-size: 30px;
+      /* Increased font size for visibility */
+      cursor: pointer;
+      color: rgb(61, 9, 9);
+      border-radius: 8px;
+      width: fit-content;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 09px;
+      margin-bottom: 6px;
+      ;
+    }
+
+    .gov-header {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      /* Or use a dark background for white emblem */
+      padding: 14px 32px;
+      border-bottom: 2px solid #e3e3e3;
+    }
+
+    .gov-emblem {
+      height: 40px;
+      margin-right: 16px;
+    }
+
+    .org-logo {
+      height: 36px;
+      margin-right: 14px;
+    }
+
+    .gov-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #333;
+      letter-spacing: .02em;
+    }
+
+    .gov-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background-color: #fff;
+      padding: 12px 24px;
+      border-bottom: 2px solid #e0e0e0;
+      font-family: Arial, sans-serif;
+    }
+
+    .gov-emblem {
+      height: 42px;
+      width: auto;
+      filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.1));
+    }
+
+    .org-logo {
+      height: 40px;
+      width: auto;
+    }
+
+    .gov-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #222;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      padding-left: 175px;
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        } */
+
+    /* nav ul {
+            /* display: flex; */
+    /* list-style: none;
+            gap: 2rem;
+        } */
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #93c5fd;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8));
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 03px 08px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+
+
+
+    }
+
+    .btn:hover {
+      background: #9a590f;
+      transform: translateY(-2px);
+    }
+
+    /* .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }  */
+
+    /* .btn-outline:hover {
+            background: var(--secondary);
+            color: white; */
+
+    /* #aman{
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        
+          font-weight: 800;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+          color: #fff;
+          background-color: #575757;
+        }
+         */
+    footer {
+      background: var(--primary-dark);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      margin: 1rem 0;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --secondary: #cd7d0c;
+      --success: #10b981;
+      --warning: #ca7910;
+      --danger: #ef4444;
+      --light: #f8fafc;
+      --dark: #1e293b;
+      --gray: #6b7280;
+    }
+
+    /* .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        } */
+
+    /* .btn:hover {
+            background: #d97706;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        } */
+
+    body {
+      background-color: #aec0cd;
+      color: #1e3a8a;
+      line-height: 1.6;
+    }
+
+    .about-paragraph {
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 20px 25px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      color: #333;
+      background-color: #f9f9f9;
+      border-left: 6px solid #007acc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .about-paragraph:hover {
+      background-color: #e6f0fa;
+      border-left-color: #005f99;
+    }
+
+    /* Style for highlighted or bold texts inside */
+    .about-paragraph strong {
+      color: #007acc;
+    }
+
+    .about-paragraph em {
+      font-style: italic;
+      color: #555;
+    }
+
+    /* Responsive font size for smaller screens */
+    @media (max-width: 600px) {
+      .about-paragraph {
+        font-size: 16px;
+        padding: 15px 20px;
+      }
+    }
+
+    /* Header Styles */
+  </style>
 
 </head>
+<!-- <div class="gov-header">
+  <img src="state-emblem.svg" alt="State Emblem of India" class="gov-emblem" />
+  <img src="org-logo.png" alt="Organization Logo" class="org-logo" />
+  <span class="gov-name">State Goverment of Jharkhand</span>
+</div> -->
 
 <body class="bg-blue-50 min-h-screen text-gray-800">
+  <!-- <header>
+        <div class="header-content"> -->
+  <!-- <div class="logo">
+                <span class="logo-icon"><i class="fas fa-landmark"></i></span>
+                <h1>Rural E-Complaint System</h1>
+            </div> -->
+  <!-- <nav>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#register"><i class="fas fa-edit"></i> Register Complaint</a></li>
+                    <li><a href="#track"><i class="fas fa-search"></i> Track Complaint</a></li>
+                    <li><a href="#contact"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+            </nav> -->
+  <!-- <div class="auth-buttons">
+                <button id="adminLoginBtn" class="btn btn-outline"><i class="fas fa-lock"></i> Admin Login</button>
+                <button id="userLoginBtn" class="btn"><i class="fas fa-user"></i> User Login</button>
+            </div> -->
+  <!-- </div>
+    </header> -->
+
+  <!-- <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Voice of the Rural Community</h2>
+            <p>Register your complaints and grievances easily. Help us make your village a better place to live.</p>
+            <a href="#register" class="btn"><i class="fas fa-edit"></i> Register a Complaint</a>
+        </div>
+    </section> -->
   <!-- Header with logo and language -->
-   <img src="https://www.freepik.com/free-photo/rural-village-landscape_1234567.html
-" alt="Rural village view">
-<!-- <div class="sidebar">
-  <a href="#">🏠 Home</a>
+  <!-- <img src="https://www.freepik.com/free-photo/rural-village-landscape_1234567.html
+" alt="Rural village view"> -->
+  <!-- <div class="sidebar">
+  <a href="#">🏠 </a>
   <a href="#">☎️ Contact Us</a>
   <a href="#">❓ Help & Support</a>
 </div> -->
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="#">🏠 Home</a>
-  <a href="#">☎️ Contact Us</a>
-  <a href="#">❓ Help & Support</a>
-</div>
+  <!-- <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🏛</span>
+                <h1>Gram Panchayat E-Complaint</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#register">Register Complaint</a></li>
+                    <li><a href="#complaints">View Complaints</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header> -->
 
-<!-- <div id="main">
+  <!-- <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Voice of the Village</h2>
+            <p>Register your complaints and grievances easily. Help us make your village a better place to live.</p>
+            <a href="#register" class="btn">Register a Complaint</a>
+        </div>
+    </section> -->
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#">🏠 About</a>
+    <a href="#">☎️ Contact Us</a>
+    <a href="#">❓ Help & Support</a>
+  </div>
+
+  <!-- <div id="main">
   <button onclick="openNav()">☰ Open Sidebar</button>
 </div> -->
-  <header class="bg-green-700 text-white p-6 flex justify-between items-center">
-    <div class="flex items-center gap-3">
-      
-      <h1 style="margin-left: 575px;" class="text-2xl md:text-3xl font-extrabold tracking-wide">Rural E-Complaint Portal</h1>
+  <header class="bg-blue-800 text-white p-6 flex justify-between items-center">
+    <!-- <div class="auth-buttons">
+                <button id="adminLoginBtn" class="btn btn-outline"><i class="fas fa-lock"></i> Admin Login</button>
+                <button id="userLoginBtn" class="btn"><i class="fas fa-user"></i> User Login</button>
+            </div> -->
+    <div id="main">
+      <button onclick="openNav()">☰</button>
     </div>
-    <select id="language" class="rounded p-2 text-black">
+    <div class="flex items-center gap-3">
+      <!-- <span class="logo-icon">🏛</span> -->
+      <h1 style="margin-left: 200px;" class="text-5xl md:text-5xl font-extrabold tracking-wide">Rural E-Complaint Portal
+      </h1>
+    </div>
+    <div class="auth-buttons">
+      <button id="adminLoginBtn" class="btn btn-outline"><i class="fas fa-lock"></i> Admin Login</button>
+      <button id="userLoginBtn" class="btn"><i class="fas fa-user"></i> User Login</button>
+    </div>
+    <!-- <select id="language" class="rounded p-2 text-black">
       <option value="en">English</option>
       <option value="hi">हिन्दी</option>
       <option value="en">English</option>
       <option value="hi">हिन्दी</option>
-    </select>
-    
+    </select> -->
+
   </header>
-  <div id="main">
+  <!-- <div id="main">
   <button onclick="openNav()">☰</button>
-</div><!-- Landing Screen with CTA buttons -->
+</div> -->
+  <!-- Landing Screen with CTA buttons -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h2>Voice of the Rural Community</h2>
+      <p>Register your complaints and grievances easily. Help us make your village a better place to live.</p>
+
+    </div>
+  </section>
   <main class="container mx-auto py-10 px-2">
+    <h1 class="about-paragraph">ABOUT</h1>
+    <p class="about-paragraph">
+      Our platform is dedicated to empowering citizens by providing an easy and efficient way to report everyday civic
+      issues such as potholes, broken streetlights, and overflowing garbage bins. We believe that local communities
+      thrive when citizens and governments work together collaboratively. With a user-friendly mobile-first design, our
+      system enables real-time reporting with photos and precise location details, ensuring that municipal authorities
+      receive accurate information quickly. We aim to bridge the communication gap between residents and local
+      government departments by offering transparent tracking and timely updates on reported issues. Our goal is to
+      increase accountability, improve response times, and foster greater citizen participation in maintaining and
+      enhancing community infrastructure. By simplifying the reporting process and providing effective resolution
+      tracking, we help build safer, cleaner, and more livable cities.
+      <strong>Join us in making a difference—your reports help shape better cities for all.</strong>
+    </p>
     <div id="welcomeScreen">
       <div class="bg-white rounded-lg shadow-md p-8 text-center max-w-2xl mx-auto">
         <h2 class="text-2xl md:text-3xl font-bold mb-2">Welcome! ग्रामीण क्षेत्र हेतु शिकायत पोर्टल</h2>
-        <p class="mb-8 text-lg">Register complaints related to electricity, water, transport, and more—with transparent tracking and updates.</p>
+        <p class="mb-8 text-lg">Register complaints related to electricity, water, transport, and more—with transparent
+          tracking and updates.</p>
         <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-          <button onclick="showSection('formSection')" class="bg-green-600 hover:bg-green-800 text-white px-6 py-3 rounded-lg font-semibold text-lg transition">Lodge a Complaint</button>
-          <button onclick="showSection('statusSection')" class="bg-blue-600 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold text-lg transition">Track Complaint Status</button>
-          <button onclick="showSection('infoSection')" class="bg-gray-600 hover:bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold text-lg transition">General Information</button>
-          <button onclick="showSection('adminSection')" class="bg-yellow-600 hover:bg-yellow-800 text-white px-6 py-3 rounded-lg font-semibold text-lg transition">Admin Dashboard</button>
+
+
+          <button onclick="showSection('formSection')"
+            class="bg-green-600 hover:bg-green-800 text-white px-6 py-3 rounded-lg font-semibold text-lg transition">Lodge
+            a Complaint</button>
+          <button onclick="showSection('statusSection')"
+            class="bg-blue-600 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold text-lg transition">Track
+            Complaint Status</button>
+          <button onclick="showSection('infoSection')"
+            class="bg-gray-600 hover:bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold text-lg transition">General
+            Information</button>
+
+          <button onclick="showSection('adminSection')"
+            class="bg-yellow-600 hover:bg-yellow-800 text-white px-6 py-3 rounded-lg font-semibold text-lg transition">Admin
+            Dashboard</button>
+
+
         </div>
       </div>
     </div>
@@ -128,7 +499,8 @@
         <h2 class="text-xl font-bold mb-4">Lodge a Complaint</h2>
         <div class="space-y-4">
           <input type="text" id="name" placeholder="Name" class="w-full border rounded px-3 py-2" required>
-          <input type="tel" id="mobile" placeholder="Mobile Number" class="w-full border rounded px-3 py-2" required pattern="\d{10,}">
+          <input type="tel" id="mobile" placeholder="Mobile Number" class="w-full border rounded px-3 py-2" required
+            pattern="\d{10,}">
           <input type="text" id="village" placeholder="Village/Town" class="w-full border rounded px-3 py-2" required>
           <input type="text" id="district" placeholder="District" class="w-full border rounded px-3 py-2" required>
           <select id="category" class="w-full border rounded px-3 py-2" required>
@@ -138,10 +510,14 @@
             <option>Transportation</option>
             <option>Others</option>
           </select>
-          <textarea id="description" placeholder="Describe the problem..." class="w-full border rounded px-3 py-2" required rows="3"></textarea>
+          <textarea id="description" placeholder="Describe the problem..." class="w-full border rounded px-3 py-2"
+            required rows="3"></textarea>
           <input type="file" accept=".jpg,.png,.pdf" class="w-full border rounded px-3 py-2" id="attach">
-          <label class="flex items-center"><input type="checkbox" id="anonymous" class="mr-2"> Submit anonymously</label>
-          <button type="submit" class="w-full bg-green-600 hover:bg-green-800 text-white font-bold rounded-lg px-4 py-2 mt-2">Submit Complaint</button>
+          <label class="flex items-center"><input type="checkbox" id="anonymous" class="mr-2"> Submit
+            anonymously</label>
+          <button type="submit"
+            class="w-full bg-green-600 hover:bg-green-800 text-white font-bold rounded-lg px-4 py-2 mt-2">Submit
+            Complaint</button>
           <p id="formResult" class="text-green-700 font-bold text-center mt-2"></p>
         </div>
       </form>
@@ -154,10 +530,13 @@
     <div id="statusSection" class="hidden">
       <div class="bg-white rounded-xl shadow max-w-md mx-auto p-8 mt-8">
         <h2 class="text-xl font-bold mb-4">Track Your Complaint</h2>
-        <input type="text" id="trackInput" placeholder="Enter Complaint ID or Mobile" class="w-full border rounded px-3 py-2 mb-2">
-        <button id="trackBtn" class="w-full bg-blue-600 hover:bg-blue-800 text-white font-bold rounded-lg px-4 py-2">Track Status</button>
+        <input type="text" id="trackInput" placeholder="Enter Complaint ID or Mobile"
+          class="w-full border rounded px-3 py-2 mb-2">
+        <button id="trackBtn"
+          class="w-full bg-blue-600 hover:bg-blue-800 text-white font-bold rounded-lg px-4 py-2">Track Status</button>
         <div id="statusResult" class="mt-4 text-lg"></div>
-        <button id="remindBtn" class="bg-yellow-500 text-white px-4 py-2 mt-3 rounded font-semibold hidden">Send Reminder</button>
+        <button id="remindBtn" class="bg-yellow-500 text-white px-4 py-2 mt-3 rounded font-semibold hidden">Send
+          Reminder</button>
         <div class="text-center mt-6">
           <button onclick="showSection('welcomeScreen')" class="text-blue-700 underline">Back to Home</button>
         </div>
@@ -169,7 +548,8 @@
       <div class="bg-white rounded-xl shadow max-w-lg mx-auto p-8 mt-8">
         <h2 class="text-xl font-bold mb-4">General Information</h2>
         <ul class="list-disc list-inside text-base mb-4">
-          <li>This portal is for rural residents to lodge problems related to electricity, water, transportation, and other civic issues.</li>
+          <li>This portal is for rural residents to lodge problems related to electricity, water, transportation, and
+            other civic issues.</li>
           <li>Complaints are reviewed by respective authorities and updated regularly.</li>
           <li>You can track your complaint status using Complaint ID or mobile number.</li>
           <li>For urgent issues, contact your local Panchayat office or helpline directly.</li>
@@ -206,17 +586,27 @@
       </div>
     </div>
   </main>
-
+  <footer id="contact">
+    <div class="footer-content">
+      <h3>Rural E-Complaint System</h3>
+      <div class="contact-info">
+        <p><i class="fas fa-phone"></i> Phone: +91-XXXXX-XXXXX</p>
+        <p><i class="fas fa-envelope"></i> Email: complaints@grampanchayat.gov.in</p>
+        <p><i class="fas fa-clock"></i> Office Hours: 9:00 AM - 5:00 PM (Monday to Saturday)</p>
+      </div>
+      <p>© 2023 Village Administration. All rights reserved.</p>
+    </div>
+  </footer>
   <!-- JavaScript for navigation and form logic -->
   <script>
     // Section navigation
     function openNav() {
-  document.getElementById("mySidebar").style.width = "250px";
-}
+      document.getElementById("mySidebar").style.width = "250px";
+    }
 
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-}
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
     function showSection(id) {
       // Hide all
       ["welcomeScreen", "formSection", "statusSection", "infoSection", "adminSection"].forEach(section => {
@@ -229,7 +619,7 @@ function closeNav() {
     // Complaint Form Handling
     let complaints = []; // For demo; store complaints in array
 
-    document.getElementById('complaintForm').onsubmit = function(e) {
+    document.getElementById('complaintForm').onsubmit = function (e) {
       e.preventDefault();
       let anon = document.getElementById('anonymous').checked;
       let name = anon ? "Anonymous" : document.getElementById('name').value.trim();
@@ -254,7 +644,7 @@ function closeNav() {
         result.classList.remove("text-green-700");
         result.classList.add("text-red-700");
       } else {
-        let cid = "R-" + (Math.floor(Math.random()*1e6));
+        let cid = "R-" + (Math.floor(Math.random() * 1e6));
         complaints.push({
           id: cid,
           name, mobile, village, district, category, description,
@@ -264,12 +654,12 @@ function closeNav() {
         result.classList.remove("text-red-700");
         result.classList.add("text-green-700");
         this.reset();
-        setTimeout(()=>{ result.textContent = ""; }, 7000);
+        setTimeout(() => { result.textContent = ""; }, 7000);
       }
     };
 
     // Status Tracking
-    document.getElementById('trackBtn').onclick = function() {
+    document.getElementById('trackBtn').onclick = function () {
       let input = document.getElementById('trackInput').value.trim().toLowerCase();
       let found = complaints.find(c => c.id.toLowerCase() === input || c.mobile === input);
       let res = document.getElementById('statusResult');
@@ -278,7 +668,7 @@ function closeNav() {
         res.textContent = `Complaint (${found.id}) for ${found.category}: Status is "${found.status}".`;
         if (found.status !== "Solved") {
           remind.classList.remove('hidden');
-          remind.onclick = function() {
+          remind.onclick = function () {
             alert("Reminder sent to authority for complaint " + found.id);
           }
         } else {
@@ -299,7 +689,7 @@ function closeNav() {
           <td class="border px-2 py-1">${c.id}</td>
           <td class="border px-2 py-1">${c.name}<br/><span class="text-sm text-gray-500">${c.village}</span></td>
           <td class="border px-2 py-1">${c.category}</td>
-          <td class="border px-2 py-1"><span class="${c.status==='Solved'?'bg-green-300':'bg-yellow-200'} px-2 py-1 rounded">${c.status}</span></td>
+          <td class="border px-2 py-1"><span class="${c.status === 'Solved' ? 'bg-green-300' : 'bg-yellow-200'} px-2 py-1 rounded">${c.status}</span></td>
           <td class="border px-2 py-1">
             <button onclick="updateStatus('${c.id}','Solved')" class="bg-green-600 text-white px-3 py-1 rounded mb-1">Mark Solved</button>
             <button onclick="updateStatus('${c.id}','Under Review')" class="bg-blue-600 text-white px-3 py-1 rounded">Under Review</button>
@@ -309,7 +699,7 @@ function closeNav() {
     }
 
     function updateStatus(id, status) {
-      let c = complaints.find(c=>c.id===id);
+      let c = complaints.find(c => c.id === id);
       if (c) c.status = status;
       renderAdminTable();
     }
@@ -317,11 +707,13 @@ function closeNav() {
     document.querySelector('button[onclick="showSection(\'adminSection\')"]').addEventListener('click', renderAdminTable);
 
     // Accessibility: auto-toggle required fields for anonymnous
-    document.getElementById('anonymous').onchange = function() {
+    document.getElementById('anonymous').onchange = function () {
       let req = !this.checked;
       document.getElementById('name').required = req;
       document.getElementById('mobile').required = req;
     };
+
   </script>
 </body>
+
 </html>
